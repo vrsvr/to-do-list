@@ -2,6 +2,20 @@
   <div>
     <h1>List tasks</h1>
 
+    <div class="row">
+      <div class="input-field col s6">
+        <select ref="select" v-model="filter">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="active">Active</option>
+          <option value="outdated">Outdated</option>
+          <option value="completed">Completed</option>
+        </select>
+        <label>Status filter</label>
+      </div>
+    </div>
+
+    <button v-if="filter" class="btn btn-small red" @click="filter = null">Clear filter</button>
+
     <hr>
 
     <table v-if="tasks.length">
@@ -16,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(task, idx) of tasks" :key="task.id">
+        <tr v-for="(task, idx) of displayTasks" :key="task.id">
           <td>{{idx + 1}}</td>
           <td>{{task.title}}</td>
           <td>{{new Date(task.date).toLocaleDateString()}}</td>
@@ -38,10 +52,25 @@
 
 export default {
   name: 'List',
+  data: () => ({
+    filter: null
+  }),
   computed: {
     tasks() {
       return this.$store.getters.tasks
+    },
+    displayTasks() {
+      return this.tasks.filter(t => {
+        if (!this.filter) {
+          return true
+        }
+        return t.status === this.filter
+      })
     }
+  },
+  mounted() {
+    // eslint-disable-next-line no-undef
+    M.FormSelect.init(this.$refs.select);
   }
 }
 </script>

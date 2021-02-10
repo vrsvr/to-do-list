@@ -1,4 +1,4 @@
-# to-do-list
+# To do list on VueJS
 
 ## Project setup
 ```

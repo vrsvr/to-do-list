@@ -1,24 +1,11 @@
 # Todo list on VueJS
+-------------------------
 
-## Project setup
-```
-npm install
-```
+## Простой список дел или список задач.
+-------------------------
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+В котором есть:
+* Возможность задавать теги задачам
+* Фильтровать задачи по статусу (Активная, выполненная или пропущенная задача)
+* Возможность просматривать все созданные задачи
+* Просматривать задачу детально и там же редактировать теги, описание и дату выполнения
